@@ -81,3 +81,7 @@ The system runs on a decentralized blockchain architecture with multiple integra
 - **MetaMask Authentication** — Handles blockchain wallet interaction and transaction authorization securely
 
 The architecture ensures transparency, immutability, and decentralized control, making the system resistant to unauthorized modification and centralized failures.
+
+## Architecture
+
+![Blockchain-based Attendance System Architecture](assets/architecture.png)
