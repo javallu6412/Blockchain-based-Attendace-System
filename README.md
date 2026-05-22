@@ -105,21 +105,6 @@ Displays all registered student IDs stored on-chain.
 
 ---
 
-# Features
-
--  Decentralized blockchain-based attendance management  
--  Immutable and tamper-proof attendance records
--  Secure student registration using Ethereum smart contracts  
--  Real-time attendance updates and retrieval
--  Permanent on-chain storage of attendance records  
--  Transparent and verifiable transaction history  
--  Real-time student count and student ID tracking  
--  Eliminates centralized database dependency  
--  Prevents unauthorized attendance modification
--  Modular architecture for future scalability
-
----
-
 # Technologies Used
 
 | Category | Technologies |
@@ -135,3 +120,16 @@ Displays all registered student IDs stored on-chain.
 | Development Environment | VS Code |
 
 ---
+
+# Features
+
+-  Decentralized blockchain-based attendance management  
+-  Immutable and tamper-proof attendance records
+-  Secure student registration using Ethereum smart contracts  
+-  Real-time attendance updates and retrieval
+-  Permanent on-chain storage of attendance records  
+-  Transparent and verifiable transaction history  
+-  Real-time student count and student ID tracking  
+-  Eliminates centralized database dependency  
+-  Prevents unauthorized attendance modification
+-  Modular architecture for future scalability
