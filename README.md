@@ -105,13 +105,36 @@ Displays all registered student IDs stored on-chain.
 
 ---
 
-# Security Advantages
+# Features
 
--  Immutable attendance records
--  No centralized database dependency
--  Transparent transaction history
--  Unauthorized modification prevention
--  Verifiable blockchain-based storage
--  Reduced proxy attendance risks
+-  Decentralized blockchain-based attendance management  
+-  Immutable and tamper-proof attendance records
+-  Secure student registration using Ethereum smart contracts  
+-  Real-time attendance updates and retrieval
+-  Permanent on-chain storage of attendance records  
+-  Transparent and verifiable transaction history  
+-  Real-time student count and student ID tracking  
+-  Eliminates centralized database dependency  
+-  Prevents unauthorized attendance modification
+-  Modular architecture for future scalability
+
+---
+
+# Technologies Used
+
+| Category | Technologies |
+|----------|-------------|
+| Blockchain Platform | Ethereum |
+| Smart Contract Language | Solidity |
+| Blockchain Development | Remix IDE |
+| Local Blockchain Network | Ganache / TestRPC |
+| Wallet Integration | MetaMask |
+| Blockchain Communication | Web3.js |
+| Frontend Development | HTML, CSS, JavaScript |
+| Backend Runtime | Node.js |
+| Package Management | npm |
+| Smart Contract Testing | Remix VM & MetaMask |
+| Decentralized Storage Concept | Blockchain Ledger |
+| Development Environment | VS Code |
 
 ---
