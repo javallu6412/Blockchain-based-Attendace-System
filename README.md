@@ -162,10 +162,6 @@ The system demonstrated secure and transparent attendance management through dec
   <img src="assets/web3.png" width="900"/>
 </p>
 
-<p align="center">
-  <img src="assets/web4.png" width="900"/>
-</p>
-
 The project successfully displayed:
 
 - Student registration through web interface  
