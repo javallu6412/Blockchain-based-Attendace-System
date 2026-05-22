@@ -85,3 +85,33 @@ The architecture ensures transparency, immutability, and decentralized control, 
 ## Architecture
 
 ![Blockchain-based Attendance System Architecture](assets/architecture.png)
+
+# Smart Contract Functionalities
+
+### Student Registration
+Registers a new student on the blockchain.
+
+### Increment Attendance
+Updates attendance count securely through blockchain transactions.
+
+### Retrieve Student Details
+Fetches individual student information and attendance count.
+
+### Get Student Count
+Returns the total number of registered students.
+
+### Get Student IDs
+Displays all registered student IDs stored on-chain.
+
+---
+
+# Security Advantages
+
+-  Immutable attendance records
+-  No centralized database dependency
+-  Transparent transaction history
+-  Unauthorized modification prevention
+-  Verifiable blockchain-based storage
+-  Reduced proxy attendance risks
+
+---
