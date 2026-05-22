@@ -132,9 +132,6 @@ Displays all registered student IDs stored on-chain.
 | Blockchain Communication | Web3.js |
 | Frontend Development | HTML, CSS, JavaScript |
 | Backend Runtime | Node.js |
-| Package Management | npm |
-| Smart Contract Testing | Remix VM & MetaMask |
-| Decentralized Storage Concept | Blockchain Ledger |
 | Development Environment | VS Code |
 
 ---
