@@ -82,7 +82,7 @@ The system runs on a decentralized blockchain architecture with multiple integra
 
 The architecture ensures transparency, immutability, and decentralized control, making the system resistant to unauthorized modification and centralized failures.
 
-## Architecture
+# Architecture
 
 ![Blockchain-based Attendance System Architecture](assets/architecture.png)
 
@@ -133,3 +133,44 @@ Displays all registered student IDs stored on-chain.
 -  Eliminates centralized database dependency  
 -  Prevents unauthorized attendance modification
 -  Modular architecture for future scalability
+
+---
+
+# Results
+
+The Blockchain-Based Attendance System was successfully developed and tested using Ethereum smart contracts, Web3.js integration, MetaMask authentication, and a local blockchain environment powered by Ganache.
+
+The system demonstrated secure and transparent attendance management through decentralized blockchain technology.
+
+### Transactions:
+
+<p align="center">
+  <img src="assets/trans.png" width="900"/>
+</p>
+
+### Website:
+
+<p align="center">
+  <img src="assets/web1.png" width="900"/>
+</p>
+
+<p align="center">
+  <img src="assets/web2.png" width="900"/>
+</p>
+
+<p align="center">
+  <img src="assets/web3.png" width="900"/>
+</p>
+
+<p align="center">
+  <img src="assets/web4.png" width="900"/>
+</p>
+
+The project successfully displayed:
+
+- Student registration through web interface  
+- Attendance increment transactions  
+- Blockchain transaction confirmations  
+- Student attendance details retrieval  
+- Total registered student count  
+- Complete student ID listing 
