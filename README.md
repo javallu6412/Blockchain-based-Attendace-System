@@ -204,12 +204,12 @@ Future enhancements such as biometric authentication, QR-based attendance, role-
 
 ---
 
-# Authors
+## Authors
 
-- Adithya Ajikumar  
-- Joseph Alex Valluvassery  
-- S Saran  
+- **Adithya Ajikumar**
+- **Joseph Alex Valluvassery**
+- **S Saran**
 
-### School of Electronics Engineering  
+**School of Electronics Engineering**  
 Vellore Institute of Technology, Chennai  
 November 2025
