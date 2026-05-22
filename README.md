@@ -34,3 +34,50 @@ This project addresses a different question than conventional attendance systems
 > But *“Can attendance records be permanently trusted and verified?”*
 
 ---
+
+# What This Project Does
+
+This project is a blockchain-powered attendance management system that:
+
+1. Registers students securely using Ethereum smart contracts  
+2. Stores attendance records permanently on the blockchain  
+3. Prevents unauthorized modification of attendance data  
+4. Enables transparent and tamper-proof attendance tracking  
+5. Allows attendance incrementing through blockchain transactions  
+6. Retrieves student details and attendance records in real time  
+7. Displays total student count and registered student IDs  
+8. Integrates MetaMask and Web3.js for secure blockchain interaction  
+9. Provides a simple web interface for attendance management  
+10. Eliminates dependency on centralized attendance databases  
+11. Ensures immutable and verifiable academic records  
+12. Creates a decentralized and secure attendance ecosystem
+
+# How It Works
+
+```text
+User Interaction (Web Interface)
+                ↓
+Web3.js Blockchain Communication
+                ↓
+Smart Contract Execution (Solidity)
+                ↓
+Ethereum Blockchain Validation
+                ↓
+Attendance Record Storage
+                ↓
+Real-Time Data Retrieval & Verification
+```
+
+The system runs on a decentralized blockchain architecture with multiple integrated components:
+
+- **Frontend Interface** — Allows users to register students, update attendance, and retrieve records through a web application
+
+- **Web3.js Integration Layer** — Connects the frontend with the Ethereum blockchain and handles smart contract communication
+
+- **Smart Contract Layer** — Executes attendance-related logic such as student registration and attendance incrementing using Solidity
+
+- **Blockchain Network Layer** — Validates and stores transactions permanently on the Ethereum blockchain
+
+- **MetaMask Authentication** — Handles blockchain wallet interaction and transaction authorization securely
+
+The architecture ensures transparency, immutability, and decentralized control, making the system resistant to unauthorized modification and centralized failures.
