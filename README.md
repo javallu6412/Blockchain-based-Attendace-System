@@ -154,11 +154,11 @@ The system demonstrated secure and transparent attendance management through dec
 </p>
 
 <p align="center">
-  <img src="assets/reg_confirm.png" width="900"/>
+  <img src="assets/reg_confirm.png" />
 </p>
 
 <p align="center">
-  <img src="assets/inc_confirm.png" width="900"/>
+  <img src="assets/inc_confirm.png" />
 </p>
 
 ### Website:
