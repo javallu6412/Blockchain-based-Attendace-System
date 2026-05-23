@@ -193,15 +193,37 @@ The project successfully displayed:
 # Usage
 
 ## Prerequisites
+- [Node.js](https://nodejs.org/) installed (v16 or above recommended)
 - [MetaMask](https://metamask.io/) browser extension installed
 - [Ganache](https://trufflesuite.com/ganache/) running locally
 - [Remix IDE](https://remix.ethereum.org/) for contract deployment
+- [VS Code](https://code.visualstudio.com/) as your code editor
 
-### 1. Setup Ganache
+
+### 1. Install Node.js
+1. Go to [https://nodejs.org/](https://nodejs.org/)
+2. Download and install the **LTS** version
+
+### 2. Initialize the Project in VS Code
+1. Download all file in the Codes folder to a folder in your system.
+2. Open the project folder in VS Code.
+3. Open the terminal.
+4. Verify Node.js installation:
+```bash
+node -v
+npm -v
+```
+5. Run the following command:
+```bash
+npm install
+```
+4. Your `package-lock.json` will be created automatically after `npm install`
+
+### 3. Setup Ganache
 1. Open Ganache and start a **Quickstart** workspace
 2. Note the RPC Server: `HTTP://127.0.0.1:7545` and Network ID: `1337`
 
-### 2. Connect MetaMask to Ganache
+### 4. Connect MetaMask to Ganache
 1. Open MetaMask → click the network dropdown → **Add Network manually**
 2. Fill in the following:
 
@@ -217,7 +239,7 @@ The project successfully displayed:
    - Copy the private key
    - MetaMask → profile icon → **Import Account** → paste key → Import
 
-### 3. Deploy the Smart Contract
+### 5. Deploy the Smart Contract
 1. Open [Remix IDE](https://remix.ethereum.org/)
 2. Create a new file and paste the contents of `AttendanceSheet.sol`
 3. Go to **Solidity Compiler** tab:
@@ -230,7 +252,7 @@ The project successfully displayed:
    - Click **Deploy** and confirm in MetaMask
 5. Copy the deployed **contract address** from the bottom left panel in Remix
 
-### 4. Configure the Frontend
+### 6. Configure the Frontend
 1. Open `student.html` in VS Code
 2. Find this line and replace with your deployed contract address:
 ```javascript
@@ -238,7 +260,7 @@ The project successfully displayed:
 ```
 3. Make sure `student.html` and `main.css` are in the same folder
 
-### 5. Run the App
+### 7. Run the App
 1. Open `student.html` in your browser
 2. MetaMask will prompt for connection — click **Connect**
 3. The status bar at the top will turn **green** when connected successfully
