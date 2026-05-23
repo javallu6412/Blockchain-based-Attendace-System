@@ -1,0 +1,24 @@
+# Node modules
+node_modules/
+
+# Package lock
+package-lock.json
+
+# Environment files
+.env
+
+# VS Code settings
+.vscode/
+
+# Logs
+npm-debug.log*
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Ganache files
+*.log
+
+# Temporary files
+temp/
