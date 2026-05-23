@@ -129,10 +129,36 @@ The Blockchain-Based Attendance System was successfully developed and tested usi
 
 The system demonstrated secure and transparent attendance management through decentralized blockchain technology.
 
+### Ganache:
+
+<p align="center">
+  <img src="assets/Ganache.png" width="900"/>
+</p>
+
+### RemixIDE:
+
+<p align="center">
+  <img src="assets/remixIDE.png" width="900"/>
+</p>
+
+### Metamask:
+
+<p align="center">
+  <img src="assets/metamask.png" width="900"/>
+</p>
+
 ### Transactions:
 
 <p align="center">
-  <img src="assets/trans.png" width="900"/>
+  <img src="assets/confirm.png" width="900"/>
+</p>
+
+<p align="center">
+  <img src="assets/reg_confirm.png" width="900"/>
+</p>
+
+<p align="center">
+  <img src="assets/inc_confirm.png" width="900"/>
 </p>
 
 ### Website:
