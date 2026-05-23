@@ -167,9 +167,13 @@ The system demonstrated secure and transparent attendance management through dec
   <img src="assets/web1.png" width="900"/>
 </p>
 
+Student Registration & Attendance Increment:
+
 <p align="center">
   <img src="assets/web2.png" width="900"/>
 </p>
+
+Get Student Details & Count:
 
 <p align="center">
   <img src="assets/web3.png" width="900"/>
