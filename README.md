@@ -150,7 +150,7 @@ The system demonstrated secure and transparent attendance management through dec
 ### Transactions:
 
 <p align="center">
-  <img src="assets/confirm.png" width="900"/>
+  <img src="assets/confirm.png" />
 </p>
 
 <p align="center">
