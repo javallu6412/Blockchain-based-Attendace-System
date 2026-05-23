@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blockchain Attendance System</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Blockchain Attendance System</h1>
+
+        <!-- Connection Status -->
+        <div id="statusBar">
+            <span id="statusDot"></span>
+            <span id="statusText">Connecting to MetaMask...</span>
+        </div>
+
+        <!-- Register Student -->
+        <fieldset>
+            <legend>Register Student</legend>
+            <input type="text" id="id"    placeholder="Student ID (number)">
+            <input type="text" id="age"   placeholder="Age (number)">
+            <input type="text" id="fname" placeholder="First Name">
+            <input type="text" id="lname" placeholder="Last Name">
+            <button id="btnRegister">Register Student</button>
+        </fieldset>
+
+        <!-- Increment Attendance -->
+        <fieldset>
+            <legend>Increment Attendance</legend>
+            <input type="text" id="idAttendance" placeholder="Student ID (number)">
+            <button id="btnIncAttnd">Increment Attendance</button>
+        </fieldset>
+
+        <!-- Get Student Details -->
+        <fieldset>
+            <legend>Get Student Details</legend>
+            <input type="text" id="idDetails" placeholder="Student ID (number)">
+            <button id="btnDetails">Get Details</button>
+            <div id="stdDetails"></div>
+        </fieldset>
+
+        <!-- Get Student Count -->
+        <fieldset>
+            <legend>Student Count</legend>
+            <button id="btnCount">Get Count</button>
+            <div id="stdCount"></div>
+        </fieldset>
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.10.0/web3.min.js"></script>
+
+    <script>
+        let AttendanceManagement;
+        let web3Instance;
+
+        function setStatus(state, text) {
+            const span = document.getElementById('statusText');
+            span.textContent = text;
+        }
+
+        function showLoading(btn) {
+            btn.disabled = true;
+            btn.dataset.original = btn.innerHTML;
+            btn.innerHTML = 'Please wait…';
+        }
+
+        function hideLoading(btn) {
+            btn.disabled = false;
+            btn.innerHTML = btn.dataset.original;
+        }
+
+        function showResult(el, html) {
+            el.innerHTML = html;
+        }
+
+        const contractAddress = "0xd1747Af399cc475D61fDB6160Bf8bb8cfBaA7314";
+
+        const contractABI = [
+            {
+                "inputs": [
+                    { "internalType": "uint256", "name": "_studId", "type": "uint256" },
+                    { "internalType": "uint256", "name": "_age",    "type": "uint256" },
+                    { "internalType": "string",  "name": "_fName",  "type": "string"  },
+                    { "internalType": "string",  "name": "_lName",  "type": "string"  }
+                ],
+                "name": "createStudent",
+                "outputs": [],
+                "stateMutability": "nonpayable",
+                "type": "function"
+            },
+            {
+                "inputs": [
+                    { "internalType": "uint256", "name": "_studId", "type": "uint256" }
+                ],
+                "name": "incrementAttendance",
+                "outputs": [],
+                "stateMutability": "nonpayable",
+                "type": "function"
+            },
+            {
+                "inputs": [],
+                "stateMutability": "nonpayable",
+                "type": "constructor"
+            },
+            {
+                "anonymous": false,
+                "inputs": [
+                    { "indexed": false, "internalType": "uint256", "name": "studId", "type": "uint256" },
+                    { "indexed": false, "internalType": "string",  "name": "fName",  "type": "string"  },
+                    { "indexed": false, "internalType": "string",  "name": "lName",  "type": "string"  },
+                    { "indexed": false, "internalType": "uint256", "name": "age",    "type": "uint256" }
+                ],
+                "name": "StudentCreated",
+                "type": "event"
+            },
+            {
+                "inputs": [],
+                "name": "countStudents",
+                "outputs": [
+                    { "internalType": "uint256", "name": "", "type": "uint256" }
+                ],
+                "stateMutability": "view",
+                "type": "function"
+            },
+            {
+                "inputs": [
+                    { "internalType": "uint256", "name": "_studId", "type": "uint256" }
+                ],
+                "name": "getParticularStudent",
+                "outputs": [
+                    { "internalType": "string",  "name": "", "type": "string"  },
+                    { "internalType": "string",  "name": "", "type": "string"  },
+                    { "internalType": "uint256", "name": "", "type": "uint256" },
+                    { "internalType": "uint256", "name": "", "type": "uint256" }
+                ],
+                "stateMutability": "view",
+                "type": "function"
+            },
+            {
+                "inputs": [],
+                "name": "getStudents",
+                "outputs": [
+                    { "internalType": "uint256[]", "name": "", "type": "uint256[]" }
+                ],
+                "stateMutability": "view",
+                "type": "function"
+            }
+        ];
+
+        window.addEventListener('load', async () => {
+            if (!window.ethereum) {
+                setStatus('error', 'MetaMask not found — please install it');
+                return;
+            }
+
+            try {
+                setStatus('connecting', 'Requesting MetaMask access…');
+                await window.ethereum.request({ method: 'eth_requestAccounts' });
+
+                web3Instance = new Web3(window.ethereum);
+                window.web3  = web3Instance;
+
+                const code = await web3Instance.eth.getCode(contractAddress);
+
+                if (code === '0x' || code === '0x0') {
+                    const chainId = await web3Instance.eth.getChainId();
+                    setStatus('error',
+                        `No contract found on network (chainId: ${chainId}). ` +
+                        `Deploy the contract and update the address.`
+                    );
+                    return;
+                }
+
+                AttendanceManagement = new web3Instance.eth.Contract(contractABI, contractAddress);
+
+                const chainId = await web3Instance.eth.getChainId();
+                const accounts = await web3Instance.eth.getAccounts();
+                const shortAddr = accounts[0].slice(0, 6) + '…' + accounts[0].slice(-4);
+                setStatus('connected', `Connected: ${shortAddr} | Chain ID: ${chainId}`);
+
+            } catch (err) {
+                setStatus('error', 'Connection failed: ' + err.message);
+                console.error(err);
+            }
+        });
+
+        $('#btnRegister').click(async function () {
+            const btn = this;
+            if (!AttendanceManagement) return alert('Contract not connected yet.');
+
+            const studId = $('#id').val().trim();
+            const age    = $('#age').val().trim();
+            const fname  = $('#fname').val().trim();
+            const lname  = $('#lname').val().trim();
+
+            if (!studId || !age || !fname || !lname) return alert('Please fill in all fields.');
+            if (isNaN(studId) || isNaN(age)) return alert('Student ID and Age must be numbers.');
+
+            try {
+                showLoading(btn);
+                const accounts = await web3Instance.eth.getAccounts();
+                await AttendanceManagement.methods
+                    .createStudent(studId, age, fname, lname)
+                    .send({ from: accounts[0], gas: 3000000 });
+
+                alert('Student registered successfully!');
+                $('#id, #age, #fname, #lname').val('');
+
+            } catch (err) {
+                console.error('createStudent error:', err);
+                alert('Error: ' + (err.message || err));
+            } finally {
+                hideLoading(btn);
+            }
+        });
+
+        $('#btnIncAttnd').click(async function () {
+            const btn = this;
+            if (!AttendanceManagement) return alert('Contract not connected yet.');
+
+            const studId = $('#idAttendance').val().trim();
+            if (!studId || isNaN(studId)) return alert('Enter a valid numeric Student ID.');
+
+            try {
+                showLoading(btn);
+                const accounts = await web3Instance.eth.getAccounts();
+                await AttendanceManagement.methods
+                    .incrementAttendance(studId)
+                    .send({ from: accounts[0], gas: 3000000 });
+
+                alert('Attendance incremented!');
+                $('#idAttendance').val('');
+
+            } catch (err) {
+                console.error('incrementAttendance error:', err);
+                alert('Error: ' + (err.message || err));
+            } finally {
+                hideLoading(btn);
+            }
+        });
+
+        $('#btnDetails').click(async function () {
+            const btn = this;
+            if (!AttendanceManagement) return alert('Contract not connected yet.');
+
+            const studId = $('#idDetails').val().trim();
+            if (!studId || isNaN(studId)) return alert('Enter a valid numeric Student ID.');
+
+            try {
+                showLoading(btn);
+                const accounts = await web3Instance.eth.getAccounts();
+
+                const result = await AttendanceManagement.methods
+                    .getParticularStudent(studId)
+                    .call({ from: accounts[0] });
+
+                if (!result || result[0] === '') {
+                    showResult(document.getElementById('stdDetails'),
+                        '<p style="color:red">No student found with ID ' + studId + '</p>');
+                } else {
+                    showResult(document.getElementById('stdDetails'),
+                        '<p><b>First Name:</b> '  + result[0] + '</p>' +
+                        '<p><b>Last Name:</b> '   + result[1] + '</p>' +
+                        '<p><b>Age:</b> '          + result[2] + '</p>' +
+                        '<p><b>Attendance:</b> '   + result[3] + '</p>'
+                    );
+                }
+
+            } catch (err) {
+                console.error('getParticularStudent error:', err);
+                showResult(document.getElementById('stdDetails'),
+                    '<p style="color:red">' + (err.message || err) + '</p>');
+            } finally {
+                hideLoading(btn);
+            }
+        });
+
+        $('#btnCount').click(async function () {
+            const btn = this;
+            if (!AttendanceManagement) return alert('Contract not connected yet.');
+
+            try {
+                showLoading(btn);
+                const accounts = await web3Instance.eth.getAccounts();
+
+                const result = await AttendanceManagement.methods
+                    .countStudents()
+                    .call({ from: accounts[0] });
+
+                showResult(document.getElementById('stdCount'),
+                    '<p><b>Total Students:</b> ' + result + '</p>');
+
+            } catch (err) {
+                console.error('countStudents error:', err);
+                showResult(document.getElementById('stdCount'),
+                    '<p style="color:red">' + (err.message || err) + '</p>');
+            } finally {
+                hideLoading(btn);
+            }
+        });
+    </script>
+</body>
+</html>
