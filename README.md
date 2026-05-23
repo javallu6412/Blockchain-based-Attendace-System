@@ -52,6 +52,8 @@ This project is a blockchain-powered attendance management system that:
 11. Ensures immutable and verifiable academic records  
 12. Creates a decentralized and secure attendance ecosystem
 
+---
+
 # How It Works
 
 ```text
@@ -82,26 +84,11 @@ The system runs on a decentralized blockchain architecture with multiple integra
 
 The architecture ensures transparency, immutability, and decentralized control, making the system resistant to unauthorized modification and centralized failures.
 
+---
+
 # Architecture
 
 ![Blockchain-based Attendance System Architecture](assets/architecture.png)
-
-# Smart Contract Functionalities
-
-### Student Registration
-Registers a new student on the blockchain.
-
-### Increment Attendance
-Updates attendance count securely through blockchain transactions.
-
-### Retrieve Student Details
-Fetches individual student information and attendance count.
-
-### Get Student Count
-Returns the total number of registered students.
-
-### Get Student IDs
-Displays all registered student IDs stored on-chain.
 
 ---
 
@@ -112,7 +99,7 @@ Displays all registered student IDs stored on-chain.
 | Blockchain Platform | Ethereum |
 | Smart Contract Language | Solidity |
 | Blockchain Development | Remix IDE |
-| Local Blockchain Network | Ganache / TestRPC |
+| Local Blockchain Network | Ganache |
 | Wallet Integration | MetaMask |
 | Blockchain Communication | Web3.js |
 | Frontend Development | HTML, CSS, JavaScript |
